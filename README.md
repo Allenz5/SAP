@@ -10,7 +10,7 @@ sudo nano /boot/firmware/config.txt
 Add the following lines:
 ```
 dtparam=i2c_arm=on
-dtoverlay=i2c6
+dtoverlay=i2c-gpio,bus=4,i2c_gpio_delay_us=1,i2c_gpio_sda=23,i2c_gpio_scl=24
 ```
 
 Reboot to apply changes:
@@ -43,12 +43,12 @@ sudo i2cdetect -y 1
 ### LTR390 (UV and Ambient Light Sensor)
 - **VCC** → GPIO Pin **17**
 - **GND** → GPIO Pin **14**
-- **SCL** → GPIO Pin **16**
-- **SDA** → GPIO Pin **15**
+- **SCL** → GPIO Pin **18**
+- **SDA** → GPIO Pin **16**
 
 After wiring, check the connection:
 ```bash
-sudo i2cdetect -y 6
+sudo i2cdetect -y 4
 ```
 
 ---
